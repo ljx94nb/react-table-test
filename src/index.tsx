@@ -1,6 +1,7 @@
 /*** src/index.js ***/
 import React from 'react';
-import { BaseTable } from 'ali-react-table';
+import { BaseTable, ArtColumn } from 'ali-react-table';
+
 const ReactDemo = () => {
   const dataSource = [
     { prov: '湖北省', confirmed: 54406, cured: 4793, dead: 1457, t: '2020-02-15 19:52:02' },
@@ -10,13 +11,14 @@ const ReactDemo = () => {
     { prov: '湖南省', confirmed: 1001, cured: 417, dead: 2, t: '2020-02-15 19:52:02' }
   ];
 
-  const columns = [
+  const columns: ArtColumn[] = [
     { code: 'prov', name: '省份', width: 150 },
     { code: 'confirmed', name: '确诊', width: 100, align: 'right' },
     { code: 'cured', name: '治愈', width: 100, align: 'right' },
     { code: 'dead', name: '死亡', width: 100, align: 'right' },
     { code: 't', name: '最后更新时间', width: 180 }
   ];
+
   return <BaseTable dataSource={dataSource} columns={columns} />;
 };
 export default ReactDemo;
