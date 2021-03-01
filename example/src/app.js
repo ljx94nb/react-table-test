@@ -1,4 +1,4 @@
-/*** examples/src/app.js ***/
+/*** example/src/app.js ***/
 import React from 'react';
 import { render } from 'react-dom';
 import ReactDemo from '../../src';
