@@ -2,4 +2,5 @@ src
 example
 .babelrc
 .gitignore
+.vscode/
 webpack.config.js

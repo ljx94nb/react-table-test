@@ -1,4 +1,5 @@
 const path = require('path');
+const apiMocker = require('webpack-api-mocker');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: path.join(__dirname, './example/src/index.html'),
@@ -6,7 +7,8 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-  entry: path.join(__dirname, './example/src/app.tsx'),
+  devtool: 'source-map',
+  entry: path.join(__dirname, 'example/src/app.tsx'),
   output: {
     path: path.join(__dirname, 'example/dist'),
     filename: 'bundle.js'
@@ -40,6 +42,9 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   devServer: {
-    port: 3001
+    port: 3001,
+    before(app) {
+      apiMocker(app, path.resolve(__dirname, './src/proxy.js'));
+    }
   }
 };
